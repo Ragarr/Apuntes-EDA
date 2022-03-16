@@ -5,7 +5,6 @@ es un conjunto de pasos que tiene que resolver un problema
 
 # el rendimiento
 se mide en dos parametros, la complejidad temporal(velocidad) y la espacial(memoria)
-
 hay dos formas de analizar el algoritmo:
 
 - analisis empirico

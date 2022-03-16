@@ -98,7 +98,78 @@ def _search(node,elem)
 ```
 insert:
 al insertar un nuevo nodo el nodo no tiene hijos, es decir solo se puede insertar como una hoja, no entre dos nodos
+```
+def insert(elem):
+    self._root =self._insert(self._root,elem)
+def _insert(node,elem):
+    if not node:
+        return node(elem)
+    if node.elem==elem:
+        print('error')
+        return node
+    if elem < node.elem:
+        node.left=self._insert(node.left,elem)
+    else:
+        node.right=self._insert(node.left,elem)
+    return node
+```
+remove:
+si soy una hoja se sustituye por none
+```
+def remove(elem):
+    self._root=self._remove(self._root,elem)
+def _remove(node,elem):
+    if elem<node.elem:
+        node.left=self._remove(node.left)
+    elif elem>node.elem:
+        node.right= self.remove(node.right)
+    else: node.elem==elem
+        if node.left is None and node.right is None:
+            return None
+```
+si solo tiene un hijo simplemente se salta al eliminado
+```
+def remove(elem):
+    self._root=self._remove(self._root,elem)
 
+def _remove(node,elem):
+    if elem<node.elem:
+        node.left=self._remove(node.left)
+    elif elem>node.elem:
+        node.right= self.remove(node.right)
+    else: node.elem==elem
+        if node.left is none:
+            return node.right
+        elif node.right is none:
+            return node.left
+```
+si tiene dos hijos lo tiene que sustituir el mas pequeño de los mayores, lo buscamos. este solo tendra un hijo a derecha como maximo y volvemos al caso 2
+```
+def _minimun_node(node):
+    min_node=node
+    while min_node.left:
+        min_node=min_node.left
+    return min_node
+```
+```
+def remove(elem):
+    self._root=self._remove(self._root,elem)
+
+def _remove(node,elem):
+    if elem<node.elem:
+        node.left=self._remove(node.left)
+    elif elem>node.elem:
+        node.right= self.remove(node.right)
+    else: node.elem==elem
+        if node.left is none:
+            return node.right
+        elif node.right is none:
+            return node.left
+        else:
+            succesor = self._minimunnode(node.right)
+            node.elem = succesor.elem
+            node.right = self._remove(node.right,succesor.elem)
+```
 
 NO SE PUEDE NAVEGAR HACIA ARRIBA:
 los nodos solo conocen sus hijos, no a su padre, no tienen atributo parent 
