@@ -120,3 +120,5 @@ class BinaryTree:
             self._draw(prefix + "     ", node.right, False)
             print(prefix + "|-- " + str(node.elem))
             self._draw(prefix + "     ", node.left, True)
+
+    

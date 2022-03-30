@@ -195,6 +195,7 @@ class SList:
         '''función que devuelve el elemento que está en la mitad de la lista. Si la
         lista tiene un número par de elementos, la función devolverá el elemento en la
         posición len(l)//2 +1. Ejemplo: 1->2->3->4->5->6, l.getMiddle()=4'''
+        
 
 a = SList()
 for i in range(10):

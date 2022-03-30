@@ -207,9 +207,9 @@ class BinarySearchTree(BinaryTree):
             print(elem, ' not found')
             return node
 
-        if elem < node.elem:
+        if elem < node.elem: # elem is in the left subtree
             node.left = self._remove(node.left, elem)
-        elif elem > node.elem:
+        elif elem > node.elem: # elem is in the right subtree
             node.right = self._remove(node.right, elem)
         else:
             # node.elem == elem, node is the node to remove!!!
@@ -235,6 +235,8 @@ class BinarySearchTree(BinaryTree):
                 node.right = self._remove(node.right, successor.elem)
 
         return node
+    
+
 
 
 if __name__ == "__main__":
