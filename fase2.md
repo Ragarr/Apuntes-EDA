@@ -1,1 +1,0 @@
-hay que detectar que nodo esta desiquilibrado, identificar que nodo quiero equilibrar, hacerlo con funciones auxiliares, una funcion que diga si el arbol esta equilibrado, otra que si el nodo esta equilibrado, una que detecte que hay que aplicar al nodo, otras que apliquen las correciones 
