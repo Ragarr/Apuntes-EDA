@@ -1,7 +1,7 @@
 # Notas-EDA
 Es mi cuaderno de apuntes de Estructuras de Datos y Algoritmos de 1º de Ingenieria Informatica en la uc3m.
 
-Hay:
+Contenido:
 - TADS
 - pilas
 - colas
