@@ -13,4 +13,5 @@ Contenido:
 - arboles binarios
 - arboles binarios de busqueda
 - AVL
+- Grafos (Dijkstra)
 - algun parcial y ejercicios tipo examen suelto
