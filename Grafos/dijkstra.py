@@ -25,16 +25,17 @@ https://github.com/isegura/EDA/blob/master/graph.py
 
 import sys
 from implementaciones.graph import Graph
+
 class GraphDijkstra(Graph):
 
     def minDistance(self, distances, visited):
         """This functions returns the vertex (index) whose associated value in
         the dictionary distances is the smallest value. We 
         only consider the set of vertices that have not been visited"""
-        # Initilaize minimum distance for next node
+        # la minima distancia sera infinito por defecto
         min = sys.maxsize
 
-        # returns the vertex with minimum distance from the non-visited vertices
+        # buscamos cual es el vertice NO VISITADO mas cercano AL ORIGEN
         for vertex in self._vertices.keys():
             if distances[vertex] <= min and visited[vertex] == False:
                 min = distances[vertex]  # update the new smallest
@@ -71,19 +72,26 @@ class GraphDijkstra(Graph):
         for n in range(len(self._vertices)):
             # Pick the vertex with the minimum distance vertex.
             # u is always equal to origin in first iteration
-            u = self.minDistance(distances, visited)
 
+            # Seleccionamos el vertice mas cercano al vertice actual, con la condicion de que no se haya visitado
+            # en la primera iteracion como origen no esta visitado y 
+            # la distancia del origen al vertice actual (que es origen) es 0 u sera = origin
+            u = self.minDistance(distances, visited)
+            
+            # marcamos el vertice actual como visitado para no volver a visitarlo
             visited[u] = True
 
-            # Update distance value of the u's adjacent vertices only if the current
-            # distance is greater than new distance and the vertex in not in the shotest path tree
 
-            # we must visit all adjacent vertices (neighbours) for u
+            # vamos a recorrer los vertices adjacecentes al vertice actual u, para actualizar su distancia
+            # al origen unicamente si la distancia actual es mayor que la nueva distancia
             for adj in self._vertices[u]:
                 i = adj._vertex
                 w = adj._weight
                 if visited[i] == False and distances[i] > distances[u]+w:
-                    # we must update because its distance is greater than the new distance
+                    # tenemos que comprobar que no esta visitado el vertice ya que si esta
+                    # visitado no se actualiza la distancia para no dar vueltas en circulos
+
+                    # actualizamos la distancia del vertice actual al origen
                     distances[i] = distances[u]+w
                     previous[i] = u
 
@@ -94,7 +102,6 @@ class GraphDijkstra(Graph):
         print("Mininum path from ", origin)
 
         for i in self._vertices.keys():
-
             if distances[i] == sys.maxsize:
                 print("There is not path from ", origin, ' to ', i)
             else:
