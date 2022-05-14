@@ -5,6 +5,9 @@ class DList2(DList):
         super().__init__()
     
     def skipMremoveN(self,M:int,N:int):
+        if M<=0 or N<=0:
+            print("error m and n must be higher than 0")
+            return
         current=self._head
         while current:
             for i in range(M):
