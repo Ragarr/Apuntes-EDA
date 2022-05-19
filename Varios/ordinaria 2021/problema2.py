@@ -8,6 +8,7 @@ class MyGraph(Graph):
     
 
     def closer_vertex(self,origin,visited,distances):
+        min=maxsize
         for vertex in self._vertices.keys():
             if distances[vertex] <= min and visited[vertex] == False:
                 min = distances[vertex]  # update the new smallest
