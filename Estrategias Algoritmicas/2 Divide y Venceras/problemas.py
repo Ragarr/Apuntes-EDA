@@ -16,35 +16,25 @@ def mayorelem(l: list):
 l = [1, 2, 4, 6, 3, 9, 1, 65, 235, 45, 467, 23, 12, 0, 12, 1000]
 print(mayorelem(l))'''
 
+l=[1,2,435,2,465,78,782,34,38,73,59,234,68623,487652,873,49]
 
-'''def mergesort(l: list):
-    if len(l) == 1:
+def mergesort(l:list):
+    if len(l) <= 1:
         return l
     else:
-        primera = l[:len(l)//2]
-        segunda = l[len(l)//2:]
-
-        return merge(primera, segunda)
-
-
-def merge(l1, l2):
-    i = 0
-    j = 0
-    aux=[]
-    while i < len(l1) and j < len(l2):
-        if l1[i]<l2[j]:
-            aux.append(l1[i])
-            i+=1
-        elif l1[i]>l2[j]:
-            aux.append(l2[j])
-            j+=1
-        else:
-            aux.append(l2[j])
-            aux.append(l1[i])
-            i+=1
-            j+=1
-    return aux
-print(mergesort(l))'''
+        mitad = len(l)//2
+        izq = mergesort(l[:mitad])
+        der = mergesort(l[mitad:])
+        return merge(izq, der)
+def merge(izq,der):
+    if not izq:
+        return der
+    if not der:
+        return izq
+    if izq[0] < der[0]:
+        return [izq[0]] + merge(izq[1:],der)
+    else:
+        return [der[0]] + merge(izq,der[1:])
 
 def quicksort(l):
     if len(l) <= 1:
@@ -55,5 +45,38 @@ def quicksort(l):
         mayores = [x for x in l[1:] if x >= pivote]
         return quicksort(menores) + [pivote] + quicksort(mayores)
 
-l=[1,2,435,2,465,78,782,34,68623,487652,38,73,59,234,873,49]
-print(quicksort(l))
+
+def quicksort2(l):
+    return _quicksort2(l)
+
+def _quicksort2(l):
+    if len(l)<=1:
+        return l
+    else:
+        indice_pivote = len(l)//2
+        pivote = l[indice_pivote]
+        i=0
+        j=len(l)-1
+        left=[]
+        right=[]
+        print(l,pivote)
+        while i <= j:
+            while l[i]<pivote:
+                i+=1
+            while l[j]>pivote:
+                print('Entra')
+                j-=1
+            if i <= j:
+                print(i, j,end=' ')
+                l[i],l[j]=l[j],l[i]
+                i+=1
+                j-=1
+        print('final', l)
+        left = _quicksort2(l[:indice_pivote])
+
+        right = _quicksort2(l[indice_pivote+1:]) 
+        print('return recursivo:', left + [pivote] + right)
+        
+        return left + [pivote] + right
+print(quicksort2(l))
+print(mergesort(l))
