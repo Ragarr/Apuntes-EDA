@@ -31,7 +31,7 @@ class MyGraph(Graph):
                 if distances[e._vertex]>distances[u]+1:
                     distances[e._vertex]=distances[u]+1
                     previus[e._vertex]=u
-        return previus
+        return previus # devolvemos el valor q(≧▽≦q)
 
         
     def minimumPath(self,start,end):
