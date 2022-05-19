@@ -1,4 +1,3 @@
-from turtle import right
 from dlist import DList,DNode
 
 def mergesort(l:DList):
