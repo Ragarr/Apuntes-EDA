@@ -98,5 +98,5 @@ class MyBST:
                 else:
                     return parent
             else:
-                return 
+                return None
                 

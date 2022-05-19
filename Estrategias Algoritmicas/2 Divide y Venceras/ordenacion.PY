@@ -115,7 +115,7 @@ class DLIST_QUICKSORT(DList):
                 
 
 
-L = DLIST_QUICKSORT()
+'''L = DLIST_QUICKSORT()
 lista = [5, 4, 3, 2, 3, 0, 14]
 for i in lista:
     L.addFirst(i)
@@ -125,4 +125,7 @@ print(L)
 
 L.quicksort()
 
-print(L)
+print(L)'''
+l=[12,1,5,8,2,4,7,21,74]
+mergesort(l)
+print(l)
