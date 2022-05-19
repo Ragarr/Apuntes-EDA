@@ -4,11 +4,12 @@
 def mergesort(l: list):
     if len(l) == 1:
         return l
-    else:
-        primera = l[:len(l)//2]
-        segunda = l[len(l)//2:]
 
-        return merge(primera, segunda)
+    primera = l[:len(l)//2]
+    segunda = l[len(l)//2:]
+    primera =mergesort(primera)
+    segunda =mergesort(segunda)
+    return merge(primera, segunda)
 
 
 def merge(l1, l2):
@@ -27,7 +28,56 @@ def merge(l1, l2):
             aux.append(l1[i])
             i+=1
             j+=1
+    while i < len(l1):
+        aux.append(l1[i])
+        i += 1
+    while j < len(l2):
+        aux.append(l2[j])
+        j += 1   
+
     return aux
+
+'''def DLIST_mergesort(l:DList):
+    m=len(l)//2
+    left=DList()
+    right=DList()
+    current=l._head
+    for _ in range(m):
+        left.addLast(current.elem)
+        current=current.next
+    while current:
+        right.addLast(current.elem)
+        current=current.next
+    if len(left)>1:
+        left = mergesort(left)
+    if len(right)>1:
+        right = mergesort(right)
+    
+    return merge(left,right)
+
+def DLIST_merge(l1:DList,l2:DList):
+    merging=True
+    out=DList()
+    c1=l1._head
+    c2=l2._head
+    while merging:
+        if c1 and c2:
+            if c1.elem<c2.elem:
+                out.addLast(c1.elem)
+                c1=c1.next
+            elif c1.elem>=c2.elem:
+                out.addLast(c2.elem)
+                c2=c2.next
+        elif c1:
+            out.addLast(c1.elem)
+            c1=c1.next
+        elif c2:
+            out.addLast(c2.elem)
+            c2=c2.next
+        else:
+            merging=False  
+    return out'''
+
 
 # mi quicksort
 def my_quicksort(l):
@@ -128,4 +178,4 @@ L.quicksort()
 print(L)'''
 l=[12,1,5,8,2,4,7,21,74]
 mergesort(l)
-print(l)
+print(mergesort(l))
